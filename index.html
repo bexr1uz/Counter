@@ -1,56 +1,63 @@
 <!DOCTYPE html>
 <html lang="uz">
+
 <head>
-<meta charset="UTF-8">
-<title>Counter</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>Counter</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<div class="container">
-    <h2>Counter</h2>
+    <div class="container">
+        <h2>Counter</h2>
 
-    <p id="count">0</p>
+        <p id="count">0</p>
 
-    <button class="plus" onclick="increaseCount()">+</button>
-    <button class="minus" onclick="decreaseCount()">-</button>
-    <button class="reset" onclick="resetCount()">Reset</button>
-</div>
+        <button class="plus" id="btnplus">+</button>
+        <button class="minus" id="btnminus">-</button>
+        <button class="reset" id="btnreset">Reset</button>
+    </div>
 
-<script>
-let count = 0;
+    <script>
+        document.getElementById("btnplus").addEventListener("click", increaseCount);
+        document.getElementById("btnminus").addEventListener("click", decreaseCount);
+        document.getElementById("btnreset").addEventListener("click", resetCount);
 
-function updateCount() {
-  document.getElementById("count").innerHTML = count;
-}
+        let count = 0;
 
-function increaseCount() {
-  count++;
-  localStorage.setItem("count", count);
-  updateCount();
-}
+        function updateCount() {
+            document.getElementById("count").innerHTML = count;
+        }
 
-function decreaseCount() {
-  if(count > 0)
-  count--;
-  localStorage.setItem("count", count);
-  updateCount();
-}
+        function increaseCount() {
+            count++;
+            localStorage.setItem("count", count);
+            updateCount();
+        }
 
-function resetCount() {
-  count = 0;
-  localStorage.setItem("count", count);
-  updateCount();
-}
+        function decreaseCount() {
+            if (count > 0)
+                count--;
+            localStorage.setItem("count", count);
+            updateCount();
+        }
 
-window.onload = function(){
-  let saved = localStorage.getItem("count");
-  if (saved !== null) {
-    count = Number(saved);
-  }
-  updateCount();
-}
-</script>
+        function resetCount() {
+            count = 0;
+            localStorage.setItem("count", count);
+            updateCount();
+        }
+
+        window.onload = function () {
+            let saved = localStorage.getItem("count");
+            if (saved !== null) {
+                count = Number(saved);
+            }
+            updateCount();
+        }
+    </script>
 
 </body>
+
 </html>
