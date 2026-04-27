@@ -5,11 +5,29 @@
     <meta charset="UTF-8">
     <title>Counter</title>
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        .container {
+            width: 250px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 2px solid #000;
+            text-align: center;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+
+        button {
+            margin: 5px;
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 <body>
 
-    <div class="container">
+    <div class="container" id="box">
         <h2>Counter</h2>
 
         <p id="count">0</p>
@@ -17,6 +35,8 @@
         <button class="plus" id="btnplus">+</button>
         <button class="minus" id="btnminus">-</button>
         <button class="reset" id="btnreset">Reset</button>
+        <br><br>
+        <button id="colorBtn">Rangni o'zgartir</button>
     </div>
 
     <script>
@@ -57,44 +77,15 @@
             updateCount();
         }
 
-        const plus = document.getElementById("btnplus")
-        plus.addEventListener("mouseover", function () {
-            plus.style.backgroundColor = "aqua";
-        });
-
-        plus.addEventListener("mouseout", function () {
-            plus.style.backgroundColor = "#f2f2f2";
-        })
-
-
-
         
+        const box = document.getElementById("box");
+        const colorBtn = document.getElementById("colorBtn");
 
-        const minus = document.getElementById("btnminus")
-        minus.addEventListener("mouseover", function () {
-            minus.style.backgroundColor = "aqua";
+        colorBtn.addEventListener("click", function () {
+            box.style.backgroundColor = "blue";
         });
 
-        minus.addEventListener("mouseout", function () {
-            minus.style.backgroundColor = "#f2f2f2";
-        })
-
-
-
-
-
-
-
-        const reset = document.getElementById("btnreset")
-        reset.addEventListener("mouseover", function () {
-            reset.style.backgroundColor = "aqua";
-        });
-
-        reset.addEventListener("mouseout", function () {
-            reset.style.backgroundColor = "#f2f2f2";
-        })
     </script>
 
 </body>
-
 </html>
