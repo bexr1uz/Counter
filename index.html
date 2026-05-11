@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Counter</title>
-    <link rel="stylesheet" href="style.css">
 
     <style>
         .container {
@@ -22,6 +21,49 @@
             padding: 10px 15px;
             cursor: pointer;
         }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            background: white;
+            width: 300px;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 15% auto;
+            animation: popup 0.3s ease;
+        }
+
+        @keyframes popup {
+            from {
+                transform: scale(0.7);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .okBtn {
+            margin-top: 15px;
+            padding: 10px 20px;
+            border: none;
+            background: blue;
+            color: white;
+            border-radius: 5px;
+        }
     </style>
 </head>
 
@@ -35,8 +77,21 @@
         <button class="plus" id="btnplus">+</button>
         <button class="minus" id="btnminus">-</button>
         <button class="reset" id="btnreset">Reset</button>
+
         <br><br>
+
         <button id="colorBtn">Rangni o'zgartir</button>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="popup">
+        <div class="modal-content">
+           <h1>Iltimos kozlaringizga dam bering</h1>
+
+           <p>Va biroz dam oling</p>
+
+            <button class="okBtn" id="okBtn">OK</button>
+        </div>
     </div>
 
     <script>
@@ -54,11 +109,16 @@
             count++;
             localStorage.setItem("count", count);
             updateCount();
+
+            setTimeout(function () {
+                document.getElementById("popup").style.display = "block";
+            }, 300000); 
         }
 
         function decreaseCount() {
             if (count > 0)
                 count--;
+
             localStorage.setItem("count", count);
             updateCount();
         }
@@ -71,13 +131,14 @@
 
         window.onload = function () {
             let saved = localStorage.getItem("count");
+
             if (saved !== null) {
                 count = Number(saved);
             }
+
             updateCount();
         }
 
-        
         const box = document.getElementById("box");
         const colorBtn = document.getElementById("colorBtn");
 
@@ -85,7 +146,11 @@
             box.style.backgroundColor = "blue";
         });
 
+        document.getElementById("okBtn").addEventListener("click", function () {
+            document.getElementById("popup").style.display = "none";
+        });
     </script>
 
 </body>
+
 </html>
