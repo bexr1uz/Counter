@@ -4,67 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Counter</title>
-
-    <style>
-        .container {
-            width: 250px;
-            margin: 50px auto;
-            padding: 20px;
-            border: 2px solid #000;
-            text-align: center;
-            border-radius: 10px;
-            transition: 0.3s;
-        }
-
-        button {
-            margin: 5px;
-            padding: 10px 15px;
-            cursor: pointer;
-        }
-
-        /* Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-        }
-
-        .modal-content {
-            background: white;
-            width: 300px;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            margin: 15% auto;
-            animation: popup 0.3s ease;
-        }
-
-        @keyframes popup {
-            from {
-                transform: scale(0.7);
-                opacity: 0;
-            }
-
-            to {
-                transform: scale(1);
-                opacity: 1;
-            }
-        }
-
-        .okBtn {
-            margin-top: 15px;
-            padding: 10px 20px;
-            border: none;
-            background: blue;
-            color: white;
-            border-radius: 5px;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -83,72 +23,17 @@
         <button id="colorBtn">Rangni o'zgartir</button>
     </div>
 
-    <!-- Modal -->
     <div class="modal" id="popup">
         <div class="modal-content">
-           <h1>Iltimos kozlaringizga dam bering</h1>
+            <h1>Iltimos kozlaringizga dam bering</h1>
 
-           <p>Va biroz dam oling</p>
+            <p>Va biroz dam oling</p>
 
             <button class="okBtn" id="okBtn">OK</button>
         </div>
     </div>
 
-    <script>
-        document.getElementById("btnplus").addEventListener("click", increaseCount);
-        document.getElementById("btnminus").addEventListener("click", decreaseCount);
-        document.getElementById("btnreset").addEventListener("click", resetCount);
-
-        let count = 0;
-
-        function updateCount() {
-            document.getElementById("count").innerHTML = count;
-        }
-
-        function increaseCount() {
-            count++;
-            localStorage.setItem("count", count);
-            updateCount();
-
-            setTimeout(function () {
-                document.getElementById("popup").style.display = "block";
-            }, 300000); 
-        }
-
-        function decreaseCount() {
-            if (count > 0)
-                count--;
-
-            localStorage.setItem("count", count);
-            updateCount();
-        }
-
-        function resetCount() {
-            count = 0;
-            localStorage.setItem("count", count);
-            updateCount();
-        }
-
-        window.onload = function () {
-            let saved = localStorage.getItem("count");
-
-            if (saved !== null) {
-                count = Number(saved);
-            }
-
-            updateCount();
-        }
-
-        const box = document.getElementById("box");
-        const colorBtn = document.getElementById("colorBtn");
-
-        colorBtn.addEventListener("click", function () {
-            box.style.backgroundColor = "blue";
-        });
-
-        document.getElementById("okBtn").addEventListener("click", function () {
-            document.getElementById("popup").style.display = "none";
-        });
+    <script src="app.js">
     </script>
 
 </body>
