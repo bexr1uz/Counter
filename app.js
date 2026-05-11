@@ -15,7 +15,7 @@
 
             setTimeout(function () {
                 document.getElementById("popup").style.display = "block";
-            }, 300);
+            }, 300000);
         }
 
         function decreaseCount() {
@@ -52,3 +52,13 @@
         document.getElementById("okBtn").addEventListener("click", function () {
             document.getElementById("popup").style.display = "none";
         });
+
+
+
+
+
+
+
+
+
+        
