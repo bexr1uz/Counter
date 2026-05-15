@@ -15,7 +15,7 @@
 
             setTimeout(function () {
                 document.getElementById("popup").style.display = "block";
-            }, 300000);
+            }, 30000);
         }
 
         function decreaseCount() {
@@ -46,7 +46,7 @@
         const colorBtn = document.getElementById("colorBtn");
 
         colorBtn.addEventListener("click", function () {
-            box.style.backgroundColor = "blue";
+            box.style.backgroundColor = "green";
         });
 
         document.getElementById("okBtn").addEventListener("click", function () {
@@ -54,6 +54,12 @@
         });
 
 
+        box.addEventListener("mouseover", function () {
+            box.style.backgroundColor = "blue";
+        });
+        box.addEventListener("mouseout", function () {
+            box.style.backgroundColor = "";
+        });
 
 
 
